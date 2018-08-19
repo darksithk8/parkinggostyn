@@ -13,4 +13,20 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+ });
+
+
+ Auth::routes();
+
+ Route::get('/home', 'HomeController@index')->name('home');
+ Route::get('/create', function () {
+    return view('pages/comments');
+ });
+
+ Route::post('/home', [
+    'uses' => 'HomeController@store',
+    'as' => 'HomeController.store',
+
+], function () {
+    return view('home');});
+
